@@ -31,4 +31,8 @@
   };
 
   systemd.services."cage-tty1".wants = [ "network-online.target" ];
+
+  fonts.packages = [
+    pkgs.noto-fonts-emoji
+  ];
 }
