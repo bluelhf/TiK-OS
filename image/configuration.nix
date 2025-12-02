@@ -2,6 +2,12 @@
   pkgs,
   ...
 }:
+let
+  chrome-retry-extension = pkgs.runCommand "chrome-retry-extension" {} ''
+    mkdir -p $out
+    cp -r ${../chrome-retry}/* $out/
+  '';
+in
 {
   nix.enable = false;
 
@@ -25,7 +31,7 @@
     user = "tik";
     enable = true;
     program = ''
-      ${pkgs.ungoogled-chromium}/bin/chromium --kiosk --force-device-scale-factor=2.0 https://tietokilta.fi/fi/infoscreen
+      ${pkgs.ungoogled-chromium}/bin/chromium --kiosk --load-extension=${chrome-retry-extension} --force-device-scale-factor=2.0 https://tietokilta.fi/fi/infoscreen
     '';
     environment.WLR_LIBINPUT_NO_DEVICES = "1";
   };

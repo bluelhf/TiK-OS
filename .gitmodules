@@ -1,0 +1,3 @@
+[submodule "chrome-retry"]
+	path = chrome-retry
+	url = https://github.com/bluelhf/chrome-retry
