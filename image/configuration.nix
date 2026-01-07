@@ -3,11 +3,10 @@
   ...
 }:
 let
-  chrome-retry-extension = pkgs.fetchFromGitHub rec {
+  chrome-retry-extension = pkgs.fetchFromGitHub {
     owner = "bluelhf";
     repo = "chrome-retry";
-    version = "1.0.0";
-    tag = version;
+    tag = "1.0.0";
     hash = "sha256-HvC75e7STV7ypsGaR07OZ7jwQVseWuDuvPFwZk2M5FY=";
   };
 in
