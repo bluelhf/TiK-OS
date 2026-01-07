@@ -3,23 +3,12 @@
   ...
 }:
 let
-  chrome-retry-extension = pkgs.stdenv.mkDerivation {
-    pname = "chrome-retry";
+  chrome-retry-extension = pkgs.fetchFromGitHub rec {
+    owner = "bluelhf";
+    repo = "chrome-retry";
     version = "1.0.0";
-    src = pkgs.fetchFromGitHub {
-      owner = "bluelhf";
-      repo = "chrome-retry";
-      rev = "1.0.0";
-      hash = "sha256-HvC75e7STV7ypsGaR07OZ7jwQVseWuDuvPFwZk2M5FY=";
-    };
-
-    dontBuild = true;
-    dontConfigure = true;
-
-    installPhase = ''
-      mkdir -p $out
-      cp -r $src/* $out/
-    '';
+    tag = version;
+    hash = "sha256-HvC75e7STV7ypsGaR07OZ7jwQVseWuDuvPFwZk2M5FY=";
   };
 in
 {
